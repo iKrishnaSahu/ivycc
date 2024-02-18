@@ -1,6 +1,6 @@
 {
   "name": "ivycc",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "description": "A library to detect packages which are not compatible with angular ivy",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -13,6 +13,10 @@
   "author": {
     "name": "Krishna Sahu",
     "url": "https://krishnasahu.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iKrishnaSahu/ivycc.git"
   },
   "license": "MIT",
   "schematics": "./src/collection.json",
