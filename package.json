@@ -8,7 +8,9 @@
     "prepublish": "npm run build"
   },
   "keywords": [
-    "schematics"
+    "Angular Schematics",
+    "Angular Ivy",
+    "Ivy"
   ],
   "author": {
     "name": "Krishna Sahu",
