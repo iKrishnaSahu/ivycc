@@ -1,0 +1,32 @@
+{
+  "name": "ivycc",
+  "version": "0.0.10",
+  "description": "A library to detect packages which are not compatible with angular ivy",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && jasmine src/**/*_spec.js",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": {
+    "name": "Krishna Sahu",
+    "url": "https://krishnasahu.com"
+  },
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^17.2.0",
+    "@angular-devkit/schematics": "^17.2.0",
+    "cli-table3": "^0.6.3",
+    "semver": "^7.6.0",
+    "typescript": "~5.3.2"
+  },
+  "devDependencies": {
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^18.18.0",
+    "@types/semver": "^7.5.7",
+    "jasmine": "^5.0.0"
+  }
+}

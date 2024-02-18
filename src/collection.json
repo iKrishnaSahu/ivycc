@@ -1,0 +1,9 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "check": {
+      "description": "A blank schematic.",
+      "factory": "./check/index#ivyccCheck"
+    }
+  }
+}
