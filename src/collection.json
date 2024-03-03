@@ -1,9 +1,17 @@
 {
+  "name": "Ivycc",
+  "version": "0.1",
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
     "check": {
-      "description": "A blank schematic.",
+      "description": "Ivy compatibility check",
       "factory": "./check/index#ivyccCheck"
+    }
+  },
+  "generators": {
+    "check": {
+      "factory": "./check/index#nxIvyccCheck",
+      "schema": "./check/schema.json"
     }
   }
 }

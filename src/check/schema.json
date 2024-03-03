@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "title": "Ivycc",
+  "description": "Ivy compatibility check",
+  "properties": {}
+}

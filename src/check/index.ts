@@ -2,6 +2,7 @@ import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 import * as semver from "semver";
 import * as cliTable from "cli-table3";
 import { PackageJson } from '../models/packageJson';
+import { wrapAngularDevkitSchematic } from '@nx/devkit/ngcli-adapter'
 
 // You don't have to export the function as default. You can also have more than one rule factory
 // per file.
@@ -24,8 +25,8 @@ export function ivyccCheck(_options: any): Rule {
       const versionSupportRange = '^15.x.x';
       const supportedAngularVersion = semver.satisfies(semver.coerce(angularCliVersion) ?? angularCliVersion, versionSupportRange);
       if (supportedAngularVersion) {
-        _context.logger.info(`Found supported angular versions: ${angularCliVersion}`);
-        _context.logger.warn(`Make sure that your last 'npm install' and 'ng serve' ran without any errors.`);
+        console.log(`Found supported angular versions: ${angularCliVersion}`);
+        console.log(`Make sure that your last 'npm install' and 'ng serve' ran without any errors.`);
       } else {
         const error = `Found unsupported angular versions: ${angularCliVersion}\n` +
           `This library is tested only with Angular version ${versionSupportRange}`
@@ -67,23 +68,23 @@ export function ivyccCheck(_options: any): Rule {
 
   function postIvyccCheck(_tree: Tree, _context: SchematicContext) {
     if (nonIvyLibs.length > 0) {
-      _context.logger.warn(`Found some libraries which are not ivy compatible`);
+      console.log(`Found some libraries which are not ivy compatible`);
       const table = new cliTable({
         head: ['Non ivy libraries', 'Repository URL']
       });
       nonIvyLibs.forEach(lib => {
         table.push([lib.libName, lib.repoUrl])
       });
-      _context.logger.info(table.toString());
-      _context.logger.warn(`Now you can visit npm/github page of libraries which are mentioned in the above table and upgrade the version of that library to ivy supported version`);
-      _context.logger.warn(`If ivy supported version is not present, consider checking with the library\'s authors to see if the library is expected to be compatible with Ivy.`);
+      console.log(table.toString());
+      console.log(`Now you can visit npm/github page of libraries which are mentioned in the above table and upgrade the version of that library to ivy supported version`);
+      console.log(`If ivy supported version is not present, consider checking with the library\'s authors to see if the library is expected to be compatible with Ivy.`);
     } else {
-      _context.logger.info(`Looks like you are not using any library which is not compatible with ivy`);
+      console.log(`Looks like you are not using any library which is not compatible with ivy`);
     }
   }
 
   return (tree: Tree, _context: SchematicContext) => {
-    _context.logger.info(`Running ivy compatibility check`);
+    console.log(`Running ivy compatibility check`);
 
     preIvyccCheck(tree, _context);
     performCheck(tree, _context);
@@ -92,3 +93,5 @@ export function ivyccCheck(_options: any): Rule {
     return tree;
   };
 }
+
+export const nxIvyccCheck = wrapAngularDevkitSchematic('ivycc', 'check');

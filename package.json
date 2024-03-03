@@ -25,7 +25,10 @@
   "dependencies": {
     "@angular-devkit/core": "^17.2.0",
     "@angular-devkit/schematics": "^17.2.0",
+    "@nx/devkit": "^18.0.6",
+    "@nx/workspace": "^18.0.6",
     "cli-table3": "^0.6.3",
+    "nx": "^18.0.6",
     "semver": "^7.6.0",
     "typescript": "~5.3.2"
   },
