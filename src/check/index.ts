@@ -10,7 +10,8 @@ export function ivyccCheck(_options: any): Rule {
 
   const nonIvyLibs: {
     libName: string,
-    repoUrl: string
+    repoUrl: string,
+    currentVersion: string
   }[] = [];
 
   function preIvyccCheck(tree: Tree, _context: SchematicContext) {
@@ -44,7 +45,8 @@ export function ivyccCheck(_options: any): Rule {
       const modulePackageJson: PackageJson = _tree.readJson(`node_modules/${nodeModulePath}/package.json`) as any;
       nonIvyLibs.push({
         libName: nodeModulePath,
-        repoUrl: (modulePackageJson?.repository?.url ?? modulePackageJson?.repository) ?? 'NA'
+        repoUrl: (modulePackageJson?.repository?.url ?? modulePackageJson?.repository) ?? 'NA',
+        currentVersion: modulePackageJson.version
       });
     }
   }
@@ -70,10 +72,10 @@ export function ivyccCheck(_options: any): Rule {
     if (nonIvyLibs.length > 0) {
       console.log(`Found some libraries which are not ivy compatible`);
       const table = new cliTable({
-        head: ['Non ivy libraries', 'Repository URL']
+        head: ['Non ivy libraries', 'Repository URL', 'Current installed version']
       });
       nonIvyLibs.forEach(lib => {
-        table.push([lib.libName, lib.repoUrl])
+        table.push([lib.libName, lib.repoUrl, lib.currentVersion])
       });
       console.log(table.toString());
       console.log(`Now you can visit npm/github page of libraries which are mentioned in the above table and upgrade the version of that library to ivy supported version`);
