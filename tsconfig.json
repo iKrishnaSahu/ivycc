@@ -19,6 +19,6 @@
     "target": "es6",
     "types": ["jasmine", "node"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "check_bin.js"],
   "exclude": ["src/*/files/**/*"]
 }

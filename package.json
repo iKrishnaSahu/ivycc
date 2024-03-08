@@ -1,6 +1,6 @@
 {
   "name": "ivycc",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "A library to detect packages which are not compatible with angular ivy",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -12,6 +12,9 @@
     "Angular Ivy",
     "Ivy"
   ],
+  "bin": {
+    "ivycc": "./check_bin.js"
+  },
   "author": {
     "name": "Krishna Sahu",
     "url": "https://krishnasahu.com"

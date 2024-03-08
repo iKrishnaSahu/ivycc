@@ -4,21 +4,19 @@ Welcome to Ivy Compatibility Check, a tool designed to help you ensure that your
 
 ## Prerequisites
 
-- Make sure your project is using Angular v15
+- Make sure your project is using version lower than Angular v16
 - Make sure you have successfully installed node_modules without any errors
 - Make sure to run `ng serve` command
 
-## Installation
-
-To install Ivy Compatibility Check, simply run:
-
-```bash
-npm install ivycc --save-dev
-```
-
 ## Usage
 
-After installation, you can use Ivy Compatibility Check in your Angular project by running the following command:
+You can use Ivy Compatibility Check in your Angular project by running the following command:
+
+```bash
+npx ivycc
+```
+
+If you have installed the package as a dependency, then you can run the following commands:
 
 For angular applications -
 

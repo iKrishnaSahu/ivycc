@@ -5,7 +5,7 @@
   "schematics": {
     "check": {
       "description": "Ivy compatibility check",
-      "factory": "./check/index#ivyccCheck"
+      "factory": "./check/index#ngIvyccCheck"
     }
   },
   "generators": {
